@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QRコード読み取り</title>
+    <!-- QRスキャナーライブラリの読み込み（CDN経由で） -->
+    <script src="https://unpkg.com/qr-scanner/qr-scanner.umd.min.js"></script>
+    <!-- qr-handler.js の読み込み -->
+    <script src="qr-handler.js" defer></script>
+</head>
+<body>
+    <h1>QRコードを読み取って保存</h1>
+
+    <!-- 担当者名の入力フィールド -->
+    <label for="userName">担当者名:</label>
+    <input type="text" id="userName" name="userName" required>
+    
+    <!-- 貸出/返却の選択 -->
+    <p>貸出/返却:</p>
+    <label>
+        <input type="radio" name="actionType" value="貸出" checked> 貸出
+    </label>
+    <label>
+        <input type="radio" name="actionType" value="返却"> 返却
+    </label>
+
+    <!-- QRコードを読み取るためのビデオとボタン -->
+    <video id="qr-video"></video>
+    <button id="start-button">QRコード読み取り開始</button>
+    <p id="qr-result">結果: </p>
+
+</body>
+</html>
