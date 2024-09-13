@@ -18,21 +18,8 @@ startButton.addEventListener('click', () => {
 
     // QRスキャナーの初期化
     qrScanner = new QrScanner(video, result => {
-    // QRコードの読み取りが完了したらスキャナーを停止
-    qrScanner.stop(); 
-    resultDisplay.textContent = '結果: ' + result.data;
-}, {
-    returnDetailedScanResult: true,
-    onDecodeError: error => {
-        console.error('QRコードの読み取りに失敗しました:', error);
-    }
-});
-
-// スキャナーを開始
-qrScanner.start().catch(error => {
-    console.error('ビデオの再生に失敗しました:', error);
-});
-
+        // QRコードの読み取りが完了したらスキャナーを停止
+        qrScanner.stop(); 
 
         // スキャン結果を表示（result.data から取得）
         resultDisplay.textContent = '結果: ' + result.data;
@@ -57,9 +44,14 @@ qrScanner.start().catch(error => {
             console.error('エラー:', error);
         });
     }, {
-        returnDetailedScanResult: true // 新しいAPIを使用して詳細なスキャン結果を取得
+        returnDetailedScanResult: true, // 新しいAPIを使用して詳細なスキャン結果を取得
+        onDecodeError: error => {
+            console.error('QRコードの読み取りに失敗しました:', error);
+        }
     });
 
     // スキャナーを開始
-    qrScanner.start();
+    qrScanner.start().catch(error => {
+        console.error('ビデオの再生に失敗しました:', error);
+    });
 });
