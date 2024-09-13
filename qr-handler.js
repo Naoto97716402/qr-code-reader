@@ -4,6 +4,20 @@ const resultDisplay = document.getElementById('qr-result');
 const startButton = document.getElementById('start-button');
 let qrScanner; // QRスキャナー用の変数
 
+// MutationObserverで結果の変化を監視
+const observerConfig = { childList: true }; // 監視するのは子ノードの変更のみ
+const callback = function(mutationsList, observer) {
+    for (let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            console.log('QR結果が変更されました:', resultDisplay.textContent);
+        }
+    }
+};
+
+// MutationObserverを初期化して監視を開始
+const resultObserver = new MutationObserver(callback);
+resultObserver.observe(resultDisplay, observerConfig);
+
 // スキャンボタンがクリックされたときの処理
 startButton.addEventListener('click', () => {
     // 担当者名と貸出/返却の値を取得
