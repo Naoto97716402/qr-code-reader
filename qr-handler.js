@@ -25,7 +25,7 @@ startButton.addEventListener('click', () => {
         resultDisplay.textContent = '結果: ' + result.data;
 
         // QRコードの情報、担当者名、貸出/返却をGoogle Apps Script APIに送信
-        fetch('https://script.google.com/macros/s/AKfycbyMv3XsmAPt-s0-ELcKfeMD4QRF4yBlvmqDU-icH_r9pQNRNJFUGXL8eLmFdXEgRuXSVA/exec', {
+        fetch('<<Google Apps ScriptのウェブアプリURL>>', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
