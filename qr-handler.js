@@ -1,5 +1,5 @@
-// Web Workerのパスを指定
-QrScanner.WORKER_PATH = 'https://cdn.jsdelivr.net/npm/qr-scanner@1.4.2/qr-scanner-worker.min.js';
+// ローカルにホスティングしているqr-scanner-worker.min.jsのパスを指定
+QrScanner.WORKER_PATH = './qr-scanner-worker.min.js';
 
 // 動画要素、結果表示部分、ボタンの取得
 const video = document.getElementById('qr-video');
